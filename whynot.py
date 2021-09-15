@@ -13,7 +13,7 @@ import time
 # In[3]:
 
 
-headers = {'Authorization': "'Bearer "+st.secret["token"]+"'" , 'Accept': 'application/json', 'Content-Type': 'application/json'}
+headers = {'Authorization': st.secrets["token"] , 'Accept': 'application/json', 'Content-Type': 'application/json'}
 
 
 # In[2]:
