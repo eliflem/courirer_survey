@@ -13,7 +13,7 @@ import time
 # In[3]:
 
 
-headers = {'Authorization': st.secrets["token"] , 'Accept': 'application/json', 'Content-Type': 'application/json'}
+headers = {'Authorization': st.secrets["token"], 'Accept': 'application/json', 'Content-Type': 'application/json'}
 
 
 # In[2]:
@@ -28,85 +28,88 @@ st.text("We will use your answers to provide you the most suitable jobs")
 
 phone = st.text_input("Phone number:")
 
-query = {
-"query" : {
-"field" : "phone",
-"operator" : "=",
-"value" : phone
-} } 
-url = "https://api.intercom.io/contacts/search"
-result = r.post(url, headers=headers, json=query)
-result = result.json()
-courier_id = result["data"][0]["id"]
+if not phone:
+    st.write("please enter your phone")
+else:
+    query = {
+    "query" : {
+    "field" : "phone",
+    "operator" : "=",
+    "value" : phone
+    } } 
+    url = "https://api.intercom.io/contacts/search"
+    result = r.post(url, headers=headers, json=query)
+    result = result.json()
+    courier_id = result["data"][0]["id"]
 
 
-# In[ ]:
+    # In[ ]:
 
 
-st.text("Please select the regions that you prefer to work in. You can choose more than one region.")
-regions = st.multiselect('Choose your regions', ['R1', 'R2', 'R3', 'R4'])
+    st.text("Please select the regions that you prefer to work in. You can choose more than one region.")
+    regions = st.multiselect('Choose your regions', ['R1', 'R2', 'R3', 'R4'])
 
 
-# In[ ]:
+    # In[ ]:
 
 
-update_1 = {"type": "contact",
-        "id": courier_id,
-        "custom_attributes" : {
-                           "regions": regions
-        }}
+    update_1 = {"type": "contact",
+            "id": courier_id,
+            "custom_attributes" : {
+                               "regions": regions
+            }}
 
 
-# In[12]:
+    # In[12]:
 
 
-update = r.put("https://api.intercom.io/contacts/"+courier_id+"", headers=headers, json=update_1)
+    update = r.put("https://api.intercom.io/contacts/"+courier_id+"", headers=headers, json=update_1)
 
 
-# In[ ]:
+    # In[ ]:
 
 
-st.text("Please select how will be your weekly working schedule")
+    st.text("Please select how will be your weekly working schedule")
 
-schedule = st.radio('Choose your daily working schedule', ('I will work whole work', 'I will work half week', 'I will work whenever I find time'))
-
-
-# In[2]:
+    schedule = st.radio('Choose your daily working schedule', ('I will work whole work', 'I will work half week', 'I will work whenever I find time'))
 
 
-update_2 = {"type": "contact",
- "id": courier_id,
-  "custom_attributes" : {
-                       "schedule": schedule
-}}
+    # In[2]:
 
 
-# In[ ]:
+    update_2 = {"type": "contact",
+     "id": courier_id,
+      "custom_attributes" : {
+                           "schedule": schedule
+    }}
 
 
-update = r.put("https://api.intercom.io/contacts/"+courier_id+"", headers=headers, json=update_2)
+    # In[ ]:
 
 
-# In[ ]:
+    update = r.put("https://api.intercom.io/contacts/"+courier_id+"", headers=headers, json=update_2)
 
 
-st.text("Please select if you have a company")
-
-has_company = st.selectbox('Do you have a company', ('Yes', 'No'))
+    # In[ ]:
 
 
-# In[22]:
+    st.text("Please select if you have a company")
+
+    has_company = st.selectbox('Do you have a company', ('Yes', 'No'))
 
 
-update_3 = {"type": "contact",
- "id": courier_id,
-  "custom_attributes" : {
-                       "has_company": has_company
-}}
+    # In[22]:
 
 
-# In[ ]:
+    update_3 = {"type": "contact",
+     "id": courier_id,
+      "custom_attributes" : {
+                           "has_company": has_company
+    }}
 
 
-update = r.put("https://api.intercom.io/contacts/"+courier_id+"", headers=headers, json=update_3)
+    # In[ ]:
+
+
+    update = r.put("https://api.intercom.io/contacts/"+courier_id+"", headers=headers, json=update_3)
 
