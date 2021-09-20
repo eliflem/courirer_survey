@@ -42,6 +42,7 @@ with st.form(key='my_form'):
 
 
 phone = phone.replace(" ", "")
+phone = phone.replace("-", "")
 if len(phone) == 11:
     phone = phone[1:11]
 else:
