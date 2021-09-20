@@ -14,7 +14,7 @@ import time
 
 
 headers = {'Authorization': st.secrets["token"] , 'Accept': 'application/json', 'Content-Type': 'application/json'}
-headers
+
 
 
 # In[2]:
