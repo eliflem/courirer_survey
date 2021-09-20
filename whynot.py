@@ -35,7 +35,7 @@ with st.form(key='my_form'):
     st.text("Banabikurye'de çalışmaya haftada ne kadar zaman ayırabilirsiniz?")
     schedule = st.radio('Haftalık çalışma uygunluğunuzu belirtiniz', ('Haftada 20 saatten az çalışabilirim', 'Haftada 20 ila 30 saat arası çalışabilirim', 'Haftada 30 saatten fazla çalışabilirim'))
     has_company = st.radio('Kazancınıza karşılık fatura kesebileceğiniz bir şirketiniz var mı?', ('Evet', 'Hayır'))
-    submit_button = st.form_submit_button(label='Submit')
+    submit_button = st.form_submit_button(label='Gönder')
 
 
 # In[21]:
@@ -45,7 +45,7 @@ if submit_button:
 
 
 if not phone:
-    st.write("Lütfen sisteme kayıtlı telefon numaranızı giriniz.")
+    st.write("Lütfen sisteme kayıtlı telefon numaranızı girip formu doldurduktan sonra 'Gönder' butonuna basınız.")
 else:
     phone = phone.replace(" ", "")
     phone = phone.replace("-", "")
