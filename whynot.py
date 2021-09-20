@@ -34,7 +34,7 @@ with st.form(key='my_form'):
     regions = st.multiselect('Çalışmak istediğiniz bölgeleri seçiniz', ['R1', 'R2', 'R3', 'R4'])
     st.text("Please select how will be your weekly working schedule")
     schedule = st.radio('Choose your daily working schedule', ('Haftada 20 saatten az çalışabilirim', 'Haftada 20 ila 30 saat arası çalışabilirim', 'Haftada 30 saatten fazla çalışabilirim'))
-    company = st.radio('Kazancınıza karşılık fatura kesebileceğiniz bir şirketiniz var mı?', ('Evet', 'Hayır'))
+    has_company = st.radio('Kazancınıza karşılık fatura kesebileceğiniz bir şirketiniz var mı?', ('Evet', 'Hayır'))
     submit_button = st.form_submit_button(label='Submit')
 
 
