@@ -80,7 +80,7 @@ courier_id = result["data"][0]["id"]
 update_1 = {"type": "contact",
         "id": courier_id,
         "custom_attributes" : {
-                           "preferred_regions": preferred_regions
+                           "preferred_regions": preferred_regions[:]
         }}
 
 
