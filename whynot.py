@@ -43,92 +43,88 @@ if submit_button:
     st.write("Vermiş olduğunuz cevaplar için teşekkür ederiz.")
 
 
-phone = phone.replace(" ", "")
-phone = phone.replace("-", "")
-if len(phone) == 11:
-    phone = phone[1:11]
+
+if not phone:
+    st.write("Lütfen sisteme kayıtlı telefon numaranızı giriniz.")
 else:
-    phone = phone
+    phone = phone.replace(" ", "")
+    phone = phone.replace("-", "")
+    if len(phone) == 11:
+        phone = phone[1:11]
+    else:
+        phone = phone
 
 
-# #get phone number remove spaces and 0 from mthe beginning
-# phone = phone.replace(" ", "")
-
-# if len(phone) == 11:
-#     phone = phone[1:11]
-# else:
-#     phone = phone
-
-# In[3]:
+    # In[3]:
 
 
-query = {
-"query" : {
-"field" : "phone",
-"operator" : "=",
-"value" : phone
-} } 
-url = "https://api.intercom.io/contacts/search"
-result = r.post(url, headers=headers, json=query)
-result = result.json()
-courier_id = result["data"][0]["id"]
+    query = {
+    "query" : {
+    "field" : "phone",
+    "operator" : "=",
+    "value" : phone
+    } } 
+    url = "https://api.intercom.io/contacts/search"
+    result = r.post(url, headers=headers, json=query)
+    result = result.json()
+    courier_id = result["data"][0]["id"]
 
 
-# st.text("Please select the regions that you prefer to work in. You can choose more than one region.")
-# regions = st.multiselect('Choose your regions', ['R1', 'R2', 'R3', 'R4'])
+    # st.text("Please select the regions that you prefer to work in. You can choose more than one region.")
+    # regions = st.multiselect('Choose your regions', ['R1', 'R2', 'R3', 'R4'])
 
-# In[ ]:
-
-
-update_1 = {"type": "contact",
-        "id": courier_id,
-        "custom_attributes" : {
-                           "preferred_regions": ' '.join(str(x) for x in preferred_regions)
-        }}
+    # In[ ]:
 
 
-# In[12]:
+    update_1 = {"type": "contact",
+            "id": courier_id,
+            "custom_attributes" : {
+                               "preferred_regions": ' '.join(str(x) for x in preferred_regions)
+            }}
 
 
-update = r.put("https://api.intercom.io/contacts/"+courier_id+"", headers=headers, json=update_1)
+    # In[12]:
 
 
-# st.text("Please select how will be your weekly working schedule")
-# 
-#     schedule = st.radio('Choose your daily working schedule', ('I will work whole work', 'I will work half week', 'I will work whenever I find time'))
-
-# In[2]:
+    update = r.put("https://api.intercom.io/contacts/"+courier_id+"", headers=headers, json=update_1)
 
 
-update_2 = {"type": "contact",
- "id": courier_id,
-  "custom_attributes" : {
-                       "schedule": schedule
-}}
+    # st.text("Please select how will be your weekly working schedule")
+    # 
+    #     schedule = st.radio('Choose your daily working schedule', ('I will work whole work', 'I will work half week', 'I will work whenever I find time'))
+
+    # In[2]:
 
 
-# In[ ]:
+    update_2 = {"type": "contact",
+     "id": courier_id,
+      "custom_attributes" : {
+                           "schedule": schedule
+    }}
 
 
-update = r.put("https://api.intercom.io/contacts/"+courier_id+"", headers=headers, json=update_2)
+    # In[ ]:
 
 
-# st.text("Please select if you have a company")
-# 
-# has_company = st.selectbox('Do you have a company', ('Yes', 'No'))
-
-# In[22]:
+    update = r.put("https://api.intercom.io/contacts/"+courier_id+"", headers=headers, json=update_2)
 
 
-update_3 = {"type": "contact",
- "id": courier_id,
-  "custom_attributes" : {
-                       "has_company": has_company
-}}
+    # st.text("Please select if you have a company")
+    # 
+    # has_company = st.selectbox('Do you have a company', ('Yes', 'No'))
+
+    # In[22]:
 
 
-# In[ ]:
+    update_3 = {"type": "contact",
+     "id": courier_id,
+      "custom_attributes" : {
+                           "has_company": has_company
+    }}
 
 
-update = r.put("https://api.intercom.io/contacts/"+courier_id+"", headers=headers, json=update_3)
+    # In[ ]:
+
+
+    update = r.put("https://api.intercom.io/contacts/"+courier_id+"", headers=headers, json=update_3)
 
