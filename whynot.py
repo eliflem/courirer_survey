@@ -24,7 +24,7 @@ st.title("Banabikurye'de Daha Fazla Kazanç Elde Etmek İster Misiniz?")
 st.subheader("Vereceğiniz bilgileri size daha uygun gönderiler sağlayabilmek için kullanacağız.")
 
 
-phone = st.text_input("Telefon numaranız:")
+phone = st.number_input("Telefon numaranız:")
 
 def external_id(phone):
     while True:
