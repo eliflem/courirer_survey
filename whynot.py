@@ -20,7 +20,7 @@ headers = {'Authorization': st.secrets["token"] , 'Accept': 'application/json', 
 # In[2]:
 
 
-st.title("Banabikurye'de Daha Fazla Kazanç Elde Etmek İster Misiniz?")
+st.title("Daha Fazla Kazanç Elde Etmek İster Misiniz?")
 st.subheader("Vereceğiniz bilgileri size daha uygun gönderiler sağlayabilmek için kullanacağız.")
 
 
