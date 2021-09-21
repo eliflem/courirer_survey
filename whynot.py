@@ -24,38 +24,33 @@ st.title("Sizi Daha İyi Tanımamıza Yardımcı Olur Musunuz")
 st.subheader("Vereceğiniz bilgileri size daha uygun gönderiler sağlayabilmek için kullanacağız.")
 
 
+st.text("Lütfen sistemde kayıtlı olan telefon numaranızı giriniz")
+phone = st.text_input("Telefon numaranız:")
+
 # In[ ]:
 
-
-with st.form(key='my_form'):
-    st.text("Lütfen sistemde kayıtlı olan telefon numaranızı giriniz")
-    phone = st.text_input("Telefon numaranız:")
-    st.text("Çalışmak istediğiniz bölgeleri seçiniz")
-    preferred_regions = st.multiselect('Çalışmak istediğiniz bölgeleri seçiniz', ['R1', 'R2', 'R3', 'R4'])
-    st.text("Banabikurye'de çalışmaya haftada ne kadar zaman ayırabilirsiniz?")
-    schedule = st.radio('Haftalık çalışma uygunluğunuzu belirtiniz', ('Haftada 20 saatten az çalışabilirim', 'Haftada 20 ila 30 saat arası çalışabilirim', 'Haftada 30 saatten fazla çalışabilirim'))
-    has_company = st.radio('Kazancınıza karşılık fatura kesebileceğiniz bir şirketiniz var mı?', ('Evet', 'Hayır'))
-    submit_button = st.form_submit_button(label='Gönder')
-
-
-# In[21]:
-if submit_button:
-    st.write("Vermiş olduğunuz cevaplar için teşekkür ederiz.")
-
-
-
 if not phone:
-    st.write("Lütfen sisteme kayıtlı telefon numaranızı girip formu doldurduktan sonra 'Gönder' butonuna basınız.")
+    st.write("Lütfen sisteme kayıtlı telefon numaranızı girip formu doldurunuz.")
 else:
+    with st.form(key='my_form'):
+        st.text("Çalışmak istediğiniz bölgeleri seçiniz")
+        preferred_regions = st.multiselect('Çalışmak istediğiniz bölgeleri seçiniz', ['R1', 'R2', 'R3', 'R4'])
+        st.text("Banabikurye'de çalışmaya haftada ne kadar zaman ayırabilirsiniz?")
+        schedule = st.radio('Haftalık çalışma uygunluğunuzu belirtiniz', ('Haftada 20 saatten az çalışabilirim', 'Haftada 20 ila 30 saat arası çalışabilirim', 'Haftada 30 saatten fazla çalışabilirim'))
+        has_company = st.radio('Kazancınıza karşılık fatura kesebileceğiniz bir şirketiniz var mı?', ('Evet', 'Hayır'))
+        submit_button = st.form_submit_button(label='Gönder')
+
+
+    # In[21]:
+    if submit_button:
+        st.write("Vermiş olduğunuz cevaplar için teşekkür ederiz.")
+
     phone = phone.replace(" ", "")
     phone = phone.replace("-", "")
     if len(phone) == 11:
         phone = phone[1:11]
     else:
         phone = phone
-
-
-    # In[3]:
 
 
     query = {
