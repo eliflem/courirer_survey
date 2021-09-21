@@ -59,7 +59,8 @@ else:
     with st.form(key='my_form'):
         st.text("Hangi bölgelerde çalışmayı tercih edersiniz?")
         preferred_regions = st.multiselect('Çalışmak istediğiniz bölgeleri seçiniz', ['R1', 'R2', 'R3', 'R4'])
-        schedule = st.radio('"Banabikurye'de çalışmaya haftada ne kadar zaman ayırabilirsiniz?', ('Haftada 20 saatten az çalışabilirim', 'Haftada 20 ila 30 saat arası çalışabilirim', 'Haftada 30 saatten fazla çalışabilirim'))
+        #st.text("Banabikurye'de çalışmaya haftada ne kadar zaman ayırabilirsiniz?")
+        schedule = st.radio("Banabikurye'de çalışmaya haftada ne kadar zaman ayırabilirsiniz?", ('Haftada 20 saatten az çalışabilirim', 'Haftada 20 ila 30 saat arası çalışabilirim', 'Haftada 30 saatten fazla çalışabilirim'))
         has_company = st.radio('Kazancınıza karşılık fatura kesebileceğiniz bir şirketiniz var mı?', ('Evet', 'Hayır'))
         submit_button = st.form_submit_button(label='Gönder')
 
