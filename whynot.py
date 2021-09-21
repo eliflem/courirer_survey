@@ -20,10 +20,10 @@ headers = {'Authorization': st.secrets["token"] , 'Accept': 'application/json', 
 # In[2]:
 
 
-st.title("Sizi Daha İyi Tanımamıza Yardımcı Olur Musunuz")
+st.title("Banabikurye'de Daha Fazla Kazanç Elde Etmek İster Misiniz?")
 st.subheader("Vereceğiniz bilgileri size daha uygun gönderiler sağlayabilmek için kullanacağız.")
 
-st.text("Lütfen sistemde kayıtlı olan telefon numaranızı giriniz")
+
 phone = st.text_input("Telefon numaranız:")
 
 def external_id(phone):
