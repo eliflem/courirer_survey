@@ -24,7 +24,7 @@ st.title("Banabikurye'de Daha Fazla Kazanç Elde Etmek İster Misiniz?")
 st.subheader("Vereceğiniz bilgileri size daha uygun gönderiler sağlayabilmek için kullanacağız.")
 
 
-phone = st.number_input("Telefon numaranız:")
+phone = st.text_input("Telefon numaranız:")
 
 def external_id(phone):
     while True:
@@ -58,7 +58,7 @@ elif external_id(phone) == "not exist":
 else:
     with st.form(key='my_form'):
         #st.text("Hangi bölgelerde çalışmayı tercih edersiniz?")
-        preferred_regions = st.multiselect('Hangi bölgelerde çalışmayı tercih edersiniz?', ['R1', 'R2', 'R3', 'R4'])
+        preferred_regions = st.multiselect('Hangi bölgelerde çalışmayı tercih edersiniz?', ['AVP1 (Beşiktaş, Şişli, Kağıthane)', 'AVP2 (Fatih, Zeytinburnu)', 'AVP3 (Alibeyköy, Sarıyer, Sultangazi)', 'AVP4 (Gaziosmanpaşa, Esenler, Bayrampaşa, Bağcılar)', 'AVP5 (Bakırköy, Bahçelievler, Güngören, Küçükçekmece)', 'AVP6 (Başakşehir, Arnavutköy)', 'AVP7 (Avcılar, Beylikdüzü, Esenyurt, Büyükçekmece)', 'AND1 (Kadıköy, Üsküdar, Ümraniye, Ataşehir)', 'AND2 (Beykoz, Çekmeköy, Sancaktepe, Sultanbeyli)', 'AND3 (Maltepe, Kartal, Pendik, Tuzla)' ])
         #st.text("Banabikurye'de çalışmaya haftada ne kadar zaman ayırabilirsiniz?")
         schedule = st.radio("Banabikurye'de çalışmak için haftada ne kadar zaman ayırabilirsiniz?", ('Haftada 20 saatten az çalışabilirim', 'Haftada 20 ila 30 saat arası çalışabilirim', 'Haftada 30 saatten fazla çalışabilirim'))
         has_company = st.radio('Kazancınıza karşılık fatura kesebileceğiniz bir şirketiniz var mı?', ('Evet', 'Hayır'))
@@ -73,7 +73,7 @@ else:
     update_1 = {"type": "contact",
             "id": courier_id,
             "custom_attributes" : {
-                               "preferred_regions": ' '.join(str(x) for x in preferred_regions)
+                               "preferred_regions": ' '.join(x[0:5] for x in preferred_regions)
             }}
 
 
