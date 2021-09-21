@@ -29,6 +29,12 @@ phone = st.text_input("Telefon numaranız:")
 def external_id(phone):
     while True:
         try:
+            phone = phone.replace(" ", "")
+            phone = phone.replace("-", "")
+            if len(phone) == 11:
+                phone = phone[1:11]
+            else:
+                phone = phone  
             query = {
             "query" : {
                 "field" : "phone",
@@ -41,7 +47,6 @@ def external_id(phone):
             return(result["data"][0]["id"])
         except IndexError:
             return("not exist")
-
 
 if not phone:
     st.write("Lütfen sisteme kayıtlı telefon numaranızı girip formu doldurunuz.")
