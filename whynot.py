@@ -49,9 +49,9 @@ def external_id(phone):
             return("not exist")
 
 if not phone:
-    st.write("Lütfen sisteme kayıtlı telefon numaranızı girip formu doldurunuz.")
+    st.subheader("Lütfen sisteme kayıtlı telefon numaranızı girip formu doldurunuz.")
 elif external_id(phone) == "not exist":
-    st.write("Lütfen sisteme kayıtlı bir numara giriniz")
+    st.subheader("Lütfen sisteme kayıtlı bir numara giriniz")
 else:
     with st.form(key='my_form'):
         st.text("Çalışmak istediğiniz bölgeleri seçiniz")
@@ -63,7 +63,7 @@ else:
 
 
     if submit_button:
-        st.write("Vermiş olduğunuz cevaplar için teşekkür ederiz.")
+        st.subheader("Vermiş olduğunuz cevaplar için teşekkür ederiz.")
         
     courier_id = external_id(phone)
         
